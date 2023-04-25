@@ -54,23 +54,57 @@
 // 1, 2, 5, 7, 9 -> [1, 2, 5, 7, 9]
 // 6, 1, 3 -> [6, 1, 3];
 
- void Zapoinenie(int[] array)
- {
-   for(int i = 0; i < array.Length - 1; i++)
-   {
-     array[i] = new Random().Next(-10, 10);
-   }
- }
- void Pechat(int[] array)
- {
-     for (int i = 0; i < array.Length - 1; i++)
-     {
-         Console.Write(array[i] + " ");
-     }
- }
+// void Zapoinenie(int[] array)
+// {
+//   for(int i = 0; i < array.Length - 1; i++)
+//   {
+//     array[i] = new Random().Next(-10, 10);
+//   }
+// }
+// void Pechat(int[] array)
+// {
+//     for (int i = 0; i < array.Length - 1; i++)
+//     {
+//         Console.Write(array[i] + " ");
+//     }
+// }
 
 
- int[] array = new int[8];
- Zapoinenie(array);
- Pechat(array);
+// int[] array = new int[8];
+// Zapoinenie(array);
+// Pechat(array);
  
+int Prompt(string message);//Вводим число с экрана
+{
+  System.Console.Write(message);//Выводим приглашение ко вводу
+  string ReadInput = System.Console.ReadLine();//
+  int result = int.Parse(ReadInput);//приводим к числу
+  return result;//возвращаем результат
+}
+//метод для полученияслучайных значений массива
+int [] GenerateArray(int Length, int minValue, int maxValue)
+{
+  int [] array = new int[Length];// обьявляем массив
+  Random random = new Random ();
+  for (int i = 0; i < Length; i++)
+  {
+    array[i] = random.Next(minValue, maxValue + 1);//заполняем случайными числами 
+    //из диапозона SatrArr до EndArr
+  }
+  return array;
+}
+void PrintArray(int[] array)
+{
+  System.Console.Write("[");
+  for (int i = 0; i < array.Length - 1; i++)
+  {
+    System.Console.Write($"{array[i]}, ");//вывоз значения массива
+  }
+  System.Console.WriteLine("]");
+}
+
+int Length = Prompt("Длинна массива: ");
+int min = Prompt("Начальное значение, для диапозона случайного числа: ");
+int max = Prompt("Конечное значение, для диапозона случайного числа: ");
+int [] array = GenerateArray(Length, min, max);//заполнение массива случайными числами
+PrintArray(array);//вывод массива
